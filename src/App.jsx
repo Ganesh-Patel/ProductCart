@@ -1,7 +1,9 @@
+// App.js
 import React, { useReducer } from 'react';
 import ProductList from './ProductListCart/ProductListCart';
 import Cart from './Cart/Cart';
 import MyContext from './MyContext';
+import './App.css';
 
 const Products = [
   { id: 1, name: 'Product-1', price: 100 },
@@ -44,7 +46,7 @@ function App() {
 
   return (
     <MyContext.Provider value={{ state, dispatch }}>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div className="container">
         <ProductList products={Products} />
         <Cart />
       </div>

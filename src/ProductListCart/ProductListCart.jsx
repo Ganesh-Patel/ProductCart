@@ -1,6 +1,7 @@
-
+// ProductListCart.js
 import React, { useContext } from 'react';
 import MyContext from '../MyContext';
+import './ProductList.css';
 
 function ProductList({ products }) {
   const { state, dispatch } = useContext(MyContext);
@@ -14,14 +15,14 @@ function ProductList({ products }) {
   };
 
   return (
-    <div style={{ border: '1px solid black', padding: '10px', width: '40%' }}>
+    <div className="product-list">
       <h2>Products</h2>
       {products.map(product => (
-        <div key={product.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span>{product.name} - ${product.price}</span>
-          <div>
+        <div key={product.id} className="product-item">
+          <span className="product-info">{product.name} - ${product.price}</span>
+          <div className="product-actions">
             <button onClick={() => removeFromCart(product)}>-</button>
-            <span style={{ margin: '0 10px' }}>
+            <span className="quantity">
               {state.cart.find(item => item.id === product.id)?.quantity || 0}
             </span>
             <button onClick={() => addToCart(product)}>+</button>
